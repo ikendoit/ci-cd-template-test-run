@@ -1,0 +1,22 @@
+name: Commit test suite
+
+on: pull_request
+
+jobs:
+  Test-Suite:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run test suite
+        run: "echo running test suite"
+
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
+      - name: verify HTML file exists
+        run: |
+            ls ${{ github.workspace }} | grep "index.html"
+
+      - run: echo "🍏 This job's status is ${{ job.status }}."
