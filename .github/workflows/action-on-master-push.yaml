@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SURGE_LOGIN: knguyen@semios.com
+      SURGE_LOGIN: ${{secrets.SURGE_EMAIL}} 
       SURGE_TOKEN: ${{secrets.SURGE_TOKEN}} 
 
     steps:
@@ -40,4 +40,4 @@ jobs:
       run: sed -i "s#GITHUB_ACTOR#${{ github.actor }}#g" ${{ github.workspace }}/index.html
 
     - name: Deploy to Surge
-      run:  SURGE_LOGIN="$SURGE_LOGIN" SURGE_TOKEN="$SURGE_TOKEN" surge ${{ github.workspace }} https://discreet-plant.surge.sh
+      run: surge ${{ github.workspace }} https://discreet-plant.surge.sh
